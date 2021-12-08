@@ -48,6 +48,14 @@ npx mrm@2 lint-staged
 
 ## 3 - Установка дополнительных зависимостей (npm-пакетов):
 
+### -Sass
+
+Чтобы использовать Sass, сначала установите **node-sass**:
+
+```bash
+npm i -S node-sass
+```
+
 ### -Classnames
 
 Простая утилита JavaScript для условного объединения classNames вместе.
@@ -93,10 +101,12 @@ npm i -S modern-normalize
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
+    "clean": "gh-pages-clean",
     "prepare": "husky install",
-    "clean": "gh-pages-clean"
+    "predeploy": "yarn build",
+    ...
+    "predeploy": "npm run build",
   },
 ```
 

@@ -1,10 +1,11 @@
-import style from './App.scss';
-import React, { Component } from 'react';
-import Statistics from 'components/Statistic/Statistics';
-import Notification from 'components/Notification/Notification';
-import Section from 'components/Section/Section';
-import Container from 'components/Container/Container';
-import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
+import './App.scss';
+import React from 'react';
+import { Component } from 'react';
+import Statistics from './components/Statistic/Statistics';
+import Notification from './components/Notification/Notification';
+import Section from './components/Section/Section';
+import Container from './components/Container/Container';
+import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 // import classNames from 'classnames';
 
 class App extends Component {
@@ -43,7 +44,7 @@ class App extends Component {
     const objKey = Object.keys(this.state);
 
     return (
-      <App classNames={style.app}>
+      <>
         <Container>
           <Section title="Leave your Feedback">
             <FeedbackOptions
@@ -66,7 +67,7 @@ class App extends Component {
             )}
           </Section>
         </Container>
-      </App>
+      </>
     );
   }
 }

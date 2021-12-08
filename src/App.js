@@ -6,7 +6,6 @@ import Notification from './components/Notification/Notification';
 import Section from './components/Section/Section';
 import Container from './components/Container/Container';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
-// import classNames from 'classnames';
 
 class App extends Component {
   state = {
@@ -14,17 +13,20 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
+
   leaveFeadbackHandler = ({ target }) => {
     const newFeedback = target.name;
     this.setState(prevState => ({
       [newFeedback]: prevState[newFeedback] + 1,
     }));
   };
+
   countTotalFeedback = () => {
     let total = 0;
     total = this.state.good + this.state.neutral + this.state.bad;
     return total;
   };
+
   countPositiveFeedback = () =>
     Math.round((this.state.good / this.countTotalFeedback()) * 100);
 

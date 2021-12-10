@@ -1,28 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './FeedbackOptions.scss';
-import shortid from 'shortid';
+import style from '../FeedbackOptions/FeedbackOptions.module.scss';
 
 const FeedbackOptions = ({ options, leaveFeedbackHandler }) => {
   return (
-    <>
-      {options.map(option => (
-        <button
-          className={style.submitBtn}
-          key={shortid.generate()}
-          type="button"
-          name={option}
-          onClick={leaveFeedbackHandler}
-        >
-          {option}
-        </button>
+    <ul className={style.list}>
+      {options.map((option, id) => (
+        <li key={id} className={style.item}>
+          <button
+            type="button"
+            className={style.btn}
+            onClick={() => leaveFeedbackHandler(option)}
+          >
+            {option}
+          </button>
+        </li>
       ))}
-    </>
+    </ul>
   );
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   leaveFeedbackHandler: PropTypes.func.isRequired,
 };
 

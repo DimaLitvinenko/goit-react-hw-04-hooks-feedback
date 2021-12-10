@@ -56,6 +56,12 @@ npx mrm@2 lint-staged
 npm i -S node-sass
 ```
 
+### -PostCss
+
+```bash
+npm i -S postcss-loader
+```
+
 ### -Classnames
 
 Простая утилита JavaScript для условного объединения classNames вместе.

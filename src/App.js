@@ -1,11 +1,10 @@
 import './App.scss';
-import React from 'react';
-import { Component } from 'react';
-import Statistics from './components/Statistic/Statistics';
-import Notification from './components/Notification/Notification';
-import Section from './components/Section/Section';
+import React, { Component } from 'react';
 import Container from './components/Container/Container';
+import Section from './components/Section/Section';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
+import Statistics from './components/Statistics/Statistics';
+import Notification from './components/Notification/Notification';
 
 class App extends Component {
   state = {
@@ -14,62 +13,43 @@ class App extends Component {
     bad: 0,
   };
 
-  leaveFeadbackHandler = ({ target }) => {
-    const newFeedback = target.name;
+  handleFeedback = option => {
     this.setState(prevState => ({
-      [newFeedback]: prevState[newFeedback] + 1,
+      [option]: prevState[option] + 1,
     }));
   };
 
-  countTotalFeedback = () => {
-    let total = 0;
-    total = this.state.good + this.state.neutral + this.state.bad;
-    return total;
-  };
+  countTotalFeedback = () =>
+    Object.values(this.state).reduce((acc, current) => acc + current);
 
   countPositiveFeedback = () =>
     Math.round((this.state.good / this.countTotalFeedback()) * 100);
 
-  countNonFeedback = () =>
-    this.state.good === 0 && this.state.neutral === 0 && this.state.bad === 0
-      ? true
-      : false;
+  getStatisticsOptions = () => [
+    ...Object.entries(this.state),
+    ['total', this.countTotalFeedback()],
+    ['positive feedback', this.countPositiveFeedback() + `%`],
+  ];
 
   render() {
-    const {
-      leaveFeadbackHandler,
-      countTotalFeedback,
-      countPositiveFeedback,
-      countNonFeedback,
-    } = this;
-    const { good, neutral, bad } = this.state;
-    const objKey = Object.keys(this.state);
-
     return (
-      <>
-        <Container>
-          <Section title="Leave your Feedback">
-            <FeedbackOptions
-              options={objKey}
-              leaveFeedbackHandler={leaveFeadbackHandler}
-            />
-          </Section>
+      <Container>
+        <Section title="Please leave your Feedback">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            leaveFeedbackHandler={this.handleFeedback}
+          />
+        </Section>
 
-          <Section title="Statistics">
-            {countNonFeedback() ? (
-              <Notification message="No any feedback" />
-            ) : (
-              <Statistics
-                good={good}
-                neutral={neutral}
-                bad={bad}
-                total={countTotalFeedback()}
-                positiveFeedback={countPositiveFeedback()}
-              />
-            )}
+        {this.countTotalFeedback() === 0 ||
+        isNaN(this.countPositiveFeedback()) ? (
+          <Notification message="No Feedback" />
+        ) : (
+          <Section title="Statictics">
+            <Statistics options={this.getStatisticsOptions()} />
           </Section>
-        </Container>
-      </>
+        )}
+      </Container>
     );
   }
 }

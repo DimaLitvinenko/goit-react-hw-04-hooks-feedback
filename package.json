@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-02-feedback",
+  "name": "goit-react-hw-04-hooks-feedback",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DimaLitvinenko.github.io/goit-react-hw-02-feedback",
+  "homepage": "https://DimaLitvinenko.github.io/goit-react-hw-04-hooks-feedback",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
@@ -49,8 +49,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.11.0",
     "eslint-config-react-app": "^6.0.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.5.1",
     "shortid": "^2.2.16"
   },

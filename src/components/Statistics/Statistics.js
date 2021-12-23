@@ -5,10 +5,10 @@ import style from '../Statistics/Statistics.module.scss';
 const Statistics = ({ options }) => {
   return (
     <ul className={style.list}>
-      {options.map((item, id) => (
-        <li key={id} className={style.item}>
-          <p className={style.signature}>{item[0]}:</p>
-          <p className={style.quantity}>{item[1]}</p>
+      {options.map(([item, value], index) => (
+        <li key={index} className={style.item}>
+          <p className={style.signature}>{item}:</p>
+          <p className={style.quantity}>{value}</p>
         </li>
       ))}
     </ul>

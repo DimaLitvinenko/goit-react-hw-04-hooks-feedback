@@ -5,8 +5,8 @@ import style from '../FeedbackOptions/FeedbackOptions.module.scss';
 const FeedbackOptions = ({ options, leaveFeedbackHandler }) => {
   return (
     <ul className={style.list}>
-      {options.map((option, id) => (
-        <li key={id} className={style.item}>
+      {options.map((option, index) => (
+        <li key={index} className={style.item}>
           <button
             type="button"
             className={style.btn}

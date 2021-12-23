@@ -1,4 +1,4 @@
-# goit-react-hw-04-hooks-feedback
+# **goit-react-hw-04-hooks-feedback**
 
 # Критерии приема
 
@@ -15,6 +15,7 @@
 - Создан репозиторий `goit-react-hw-04-hooks-feedback`.
 - Проведи рефакторинг кода задания
   [Виджет отзывов](../homework-02/feedback/README.md) используя React-хуки.
+
 # Создать(Инициализировать) React App.
 
 _Создает React приложение в текущей папке:_
